@@ -81,7 +81,7 @@ $ aws configure
 # Rode o script!
 $ python app.py
 ```
-<img width="738" height="1600" alt="imagemproj" src="https://github.com/user-attachments/assets/ace48202-29a8-4d17-aaae-ec7edd13ad24" width="300"/> 
+<img width="738" height="1600" alt="imagemproj" src="https://github.com/user-attachments/assets/ace48202-29a8-4d17-aaae-ec7edd13ad24" width="30"/> 
 
 ---
 Desenvolvido como projeto de estudo prático por [Pedro Agrelli](https://github.com/pedroagrelli).
