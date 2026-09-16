@@ -1,8 +1,8 @@
-import requests
 import random
 import json
 import os
-
+import boto3
+import requests
 # funcao de recomendacao de musicas - posso melhorar..
 def recomendar_musica():
     pasta_do_projeto = os.path.dirname(os.path.abspath(__file__))
@@ -43,20 +43,56 @@ def buscar_bitcoin():
     preco_usd = dados["bitcoin"]["usd"]
     preco_brl = dados["bitcoin"]["brl"]
 
-    return f"₿ Bitcoin: US$ {preco_usd:,.2f} | R$ {preco_brl:,.2f}"
+    return f"Bitcoin: US$ {preco_usd:,.2f} | R$ {preco_brl:,.2f}"
 
+def enviar_email(mensagem):
+    #us-east-1
+    client = boto3.client("ses", region_name="us-east-1")
+    # monta e envia o email
+    client.send_email(
+        Source="pedroagrelli34@gmail.com",        # remetente 
+        Destination={
+            "ToAddresses": ["pedroagrelli34@gmail.com"]   # destinatário 
+        },
+        Message={
+            "Subject": {
+                "Data": "Clima, Bitcoin e Música"
+            },
+            "Body": {
+                "Text": {
+                    "Data": mensagem,
+                    "Charset": "UTF-8"
+                }
+            }
+        }
+    )
+    print("E-mail enviado")
 
 # funcao para juntar todos os valores
 def main():
-    print("=" * 40)
-    print("  Bom dia Pedro, Vamos para mais um dia.:")
-    print("=" * 40)
-    print()
-    print(buscar_clima())
-    print(buscar_bitcoin())
-    print(recomendar_musica())
-    print()
-    print("=" * 40)
+    clima = buscar_clima()
+    bitcoin = buscar_bitcoin()
+    musica = recomendar_musica()
+
+    mensagem = f"""
+
+  Bom dia Pedro, Vamos para mais um dia!
+
+
+{clima}
+
+{bitcoin}
+
+{musica}
+
+
+    """
+
+    #terminal
+    print(mensagem)
+
+    # email
+    enviar_email(mensagem)
 
 
 if __name__ == "__main__":
