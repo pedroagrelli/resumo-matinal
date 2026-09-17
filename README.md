@@ -18,9 +18,9 @@
 ## 🎯 O que o bot faz?
 
 Todo dia, pontualmente às 07:00 da manhã, este bot envia um e-mail contendo:
-- 🌡️ **Clima em tempo real** do Rio de Janeiro
-- ₿ **Cotação atual do Bitcoin** (em Dólar e Real)
-- 🎸 **Recomendação aleatória de uma música Rock** (de uma base de mais de 260 clássicos!)
+-  **Clima em tempo real** do Rio de Janeiro
+-  **Cotação atual do Bitcoin** (em Dólar e Real)
+-  **Recomendação aleatória de uma música**
 
 ## 🏗️ Arquitetura do Projeto
 
